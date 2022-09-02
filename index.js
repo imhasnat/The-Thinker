@@ -52,7 +52,19 @@ const displayNews = (categoryNews, categoryName) => {
     <p>${numberOfNews} items found for category ${categoryName}</p>
     `
     const newsContainer = document.getElementById('news-container');
+    newsContainer.innerHTML = '';
+    if (numberOfNews > 0) {
+        sortCategoryNews.forEach(news => {
+            const { image_url, thumbnail_url, title, details, total_view, author } = news;
+            const { name, published_date, img } = author
+            const div = document.createElement('div');
+            div.classList.add('card', 'mb-3')
+            // div.style.width = '540px';
+            // div.style.width = '540px';
 
+            newsContainer.appendChild(div);
+        })
+    }
     isLoading(false);
 }
 
