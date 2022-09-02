@@ -44,6 +44,17 @@ const categoryNews = async (categoryId, categoryName) => {
     displayNews(categoryNews, categoryName);
 }
 
+const displayNews = (categoryNews, categoryName) => {
+    const numberOfNews = categoryNews.length
+    const sortCategoryNews = categoryNews.sort(sorting);
+    const newsNumber = document.getElementById('news-numbers');
+    newsNumber.innerHTML = `
+    <p>${numberOfNews} items found for category ${categoryName}</p>
+    `
+    const newsContainer = document.getElementById('news-container');
+
+    isLoading(false);
+}
 
 const url = 'https://openapi.programming-hero.com/api/news/categories';
 displayCategory(url);
