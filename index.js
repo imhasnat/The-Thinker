@@ -70,7 +70,7 @@ const displayNews = (categoryNews, categoryName) => {
                         <div class="card-body">
                             <h5 class="card-title"> ${title}</h5>
                             <p class="card-text text-ellipsis">${details}</p>
-                            <div class="d-flex align-items-center justify-content-around">
+                            <div class="d-flex align-items-center justify-content-between">
                                <div class="d-flex align-items-center"> 
                                     <img src="${img}" class="img-fluid rounded-pill img-height-width" alt="...">
                                     <div class="">
@@ -79,7 +79,7 @@ const displayNews = (categoryNews, categoryName) => {
                                     </div>
                                </div>
                                <div> 
-                                    <p class="card-text">Total views: ${total_view}</p>
+                                    <p class="card-text"><i class="fa-regular fa-eye"></i> ${total_view}</p>
                                </div>
                                <div> 
                                     <i class="fa-solid fa-star-half-stroke"></i>
@@ -88,7 +88,7 @@ const displayNews = (categoryNews, categoryName) => {
                                     <i class="fa-regular fa-star"></i>
                                </div>
                                <div> 
-                                    <a data-bs-toggle="modal" data-bs-target="#exampleModal"><i class="fa-solid fa-arrow-right"></i></a>
+                                    <a class="pe-2" data-bs-toggle="modal" data-bs-target="#exampleModal"><i class="fa-solid fa-arrow-right"></i></a>
                                </div>
                             </div>
                         </div>
