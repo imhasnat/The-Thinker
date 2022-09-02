@@ -24,17 +24,17 @@ const categoryNews = async (categoryId) => {
     const retrieveData = await fetchData(url);
     const categoryNews = retrieveData.data;
     // console.log(categoryNews.length);
-    console.log(categoryNews);
+    // console.log(categoryNews);
     const numberOfNews = categoryNews.length
     const newsNumber = document.getElementById('news-numbers');
-    const p = document.createElement('p');
-    p.innerText = ``
-
+    newsNumber.innerHTML = `
+    <p>${numberOfNews} items found</p>
+    `
 }
 
 
 const url = 'https://openapi.programming-hero.com/api/news/categories';
 displayCategory(url);
-// console.log(url)
+
 
 
