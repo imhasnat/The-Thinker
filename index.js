@@ -61,7 +61,37 @@ const displayNews = (categoryNews, categoryName) => {
             div.classList.add('card', 'mb-3')
             // div.style.width = '540px';
             // div.style.width = '540px';
-
+            div.innerHTML = `
+                <div class="row g-0">
+                    <div class="col-md-3 p-2">
+                        <img src="${thumbnail_url}" class="img-fluid rounded-start h-auto" alt="...">
+                    </div>
+                    <div class="col-md-9 p-3">
+                        <div class="card-body">
+                            <h5 class="card-title"> ${title}</h5>
+                            <p class="card-text text-ellipsis">${details}</p>
+                            <div class="d-flex align-items-center justify-content-between">
+                               <div class="d-flex align-items-center"> 
+                                <img src="${img}" class="img-fluid rounded-pill img-height-width" alt="...">
+                                <div>
+                                    <p>${name ? name : "Name not found"}</p>
+                                    <p>${published_date}</p>
+                                </div>
+                               </div>
+                               <div> 
+                                    <p class="card-text">Total views: ${total_view}</p>
+                               </div>
+                               <div> 
+                                    <p class="card-text">Total views: ${total_view}</p>
+                               </div>
+                               <div> 
+                                    <p class="card-text">Total views: ${total_view}</p>
+                               </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            `
             newsContainer.appendChild(div);
         })
     }
