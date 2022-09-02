@@ -13,23 +13,35 @@ const displayCategory = async (url) => {
         const { category_id, category_name } = category;
         // console.log(category);
         const span = document.createElement('span');
-        span.setAttribute("onclick", `categoryNews(${category_id})`)
+        span.setAttribute("onclick", `categoryNews(${category_id},'${category_name}')`)
         span.innerText = category_name;
         categoriesContainer.appendChild(span)
     })
 }
 
-const categoryNews = async (categoryId) => {
+function sorting(a, b) {
+
+    return b.total_view - a.total_view;
+}
+
+const isLoading = bool => {
+    const spinner = document.getElementById('spinner');
+    if (bool) {
+        spinner.classList.remove('d-none')
+    }
+    else {
+        spinner.classList.add('d-none')
+    }
+}
+
+const categoryNews = async (categoryId, categoryName) => {
     const url = `https://openapi.programming-hero.com/api/news/category/0${categoryId}`
     const retrieveData = await fetchData(url);
     const categoryNews = retrieveData.data;
-    // console.log(categoryNews.length);
     // console.log(categoryNews);
-    const numberOfNews = categoryNews.length
-    const newsNumber = document.getElementById('news-numbers');
-    newsNumber.innerHTML = `
-    <p>${numberOfNews} items found</p>
-    `
+
+    isLoading(true);
+    displayNews(categoryNews, categoryName);
 }
 
 
