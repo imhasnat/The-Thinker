@@ -67,16 +67,16 @@ const displayNews = (categoryNews, newsAmount) => {
         div.classList.add('card', 'mb-3')
         div.innerHTML = `
         <div class="row g-0">
-            <div class="col-md-3 p-2">
-                <img src="${thumbnail_url}" class="img-fluid rounded-start h-auto" alt="...">
+            <div class="col-12 col-md-3 p-2">
+                <img src="${thumbnail_url}" class="w-100 img-fluid rounded-start h-auto" alt="...">
             </div>
-            <div class="col-md-9 p-3">
-                <div class="card-body">
-                    <div>
+            <div class="col-12 col-md-9 p-3 d-flex">
+                <div class="card-body d-flex flex-column justify-content-around">
+                    
                         <h5 class="card-title"> ${title}</h5>
-                        <p class="card-text text-ellipsis">${details}</p>
-                    </div>
-                    <div class="d-flex align-items-center justify-content-between mt-5">
+                        <p class="card-text text-ellipsis mt-3">${details}</p>
+                    
+                    <div class="d-flex align-items-center justify-content-between">
                         <div class="d-flex align-items-center"> 
                             <img src="${img}" class="img-fluid rounded-pill img-height-width" alt="...">
                             <div class="ms-2">
@@ -126,6 +126,8 @@ const numberOfSearchNews = (categoryNewsArray, categoryName) => {
 }
 
 const categoryNewsData = async (categoryId, categoryName) => {
+    console.log(categoryId, typeof categoryId)
+    console.log(categoryName, typeof categoryName)
     isLoading(true);
     const url = `https://openapi.programming-hero.com/api/news/category/${categoryId}`
     const retrieveData = await fetchData(url);
@@ -144,14 +146,15 @@ const displayCategory = async (url) => {
     categories.forEach(category => {
         const { category_id, category_name } = category;
         // console.log(category);
-        const span = document.createElement('span');
+        const span = document.createElement('button');
+        span.classList.add('btn', 'btn-light')
         span.setAttribute("onclick", `categoryNewsData('${category_id}','${category_name}')`)
         span.innerText = category_name;
         categoriesContainer.appendChild(span)
     })
 }
 
-
+categoryNewsData('01', 'Breaking News');
 const url = 'https://openapi.programming-hero.com/api/news/categories';
 displayCategory(url);
 
