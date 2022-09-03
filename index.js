@@ -128,7 +128,21 @@ const numberOfSearchNews = (categoryNewsArray, categoryName) => {
 // News data fetch
 let previous = 0;
 
-
+const highlightText = categoryId => {
+    const next = categoryId;
+    if (previous === 0) {
+        const anchor = document.getElementById(`${next}`);
+        // anchor.style.color = 'purple';
+        anchor.classList.add('custom-color');
+    }
+    else {
+        const anchorNxt = document.getElementById(`${next}`);
+        const anchorPrev = document.getElementById(`${previous}`);
+        anchorNxt.classList.add('custom-color');
+        anchorPrev.classList.remove('custom-color')
+    }
+    previous = next;
+}
 
 const categoryNewsData = async (categoryId, categoryName, boolean) => {
 
