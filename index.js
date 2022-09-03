@@ -14,9 +14,14 @@ const isLoading = boolean => {
 }
 
 const fetchData = async (url) => {
-    const res = await fetch(url);
-    const data = await res.json();
-    return data;
+    try {
+        const res = await fetch(url);
+        const data = await res.json();
+        return data;
+    }
+    catch (error) {
+        console.log(error)
+    }
 }
 // Modal Details
 const displayModalDetails = newsDetails => {
@@ -29,8 +34,8 @@ const displayModalDetails = newsDetails => {
     modalContainer.innerHTML = `
         <div class="modal-header align-items-start">
             <div>
-                <h5 class="modal-title" id="exampleModalLabel">${title ? title : "No data Available"}</h5>
-                <br><p class="mb-1"><span class="fw-bold"> Published:</span> ${published_date ? published_date : "No data Available"}</p>
+                <h5 class="modal-title title-style" id="exampleModalLabel">${title ? title : "No data Available"}</h5>
+                <br><p class="mb-1 date-style"><span class="fw-bold"> Published:</span> ${published_date ? published_date : "No data Available"}</p>
                 
             </div>
             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
@@ -38,7 +43,7 @@ const displayModalDetails = newsDetails => {
         </div>
         <div class="modal-body">
             <img src="${image_url ? image_url : "No data Available"}" class="img-fluid rounded-start h-auto" alt="...">
-            <p class="card-text text-scroll mt-2">${details ? details : "No data Available"}</p>
+            <p class="card-text text-scroll mt-2 paragraph-font">${details ? details : "No data Available"}</p>
         </div>
         <div class="modal-footer">
             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
@@ -73,30 +78,30 @@ const displayNews = (categoryNews) => {
             <div class="col-12 col-md-9 p-3 d-flex">
                 <div class="card-body d-flex flex-column justify-content-around ">
                     
-                        <h5 class="card-title"> ${title ? title : "No data Available"}</h5>
-                        <p class="card-text text-ellipsis mt-3">${details ? details : "No data Available"}</p>
+                        <h5 class="card-title title-style"> ${title ? title : "No data Available"}</h5>
+                        <p class="card-text text-ellipsis mt-3 paragraph-font">${details ? details : "No data Available"}</p>
                         <div class="row row-cols-1 row-cols-sm-2 row-cols-md-4 g-2">
                             <div class="col text-center text-lg-start m-auto">
                                 <div class="d-lg-flex">
                                     <img src="${img}" class="img-fluid rounded-pill img-height-width" alt="...">
                                     <div class="ms-2">
-                                        <p class="mb-1">${name ? name : "No data Available"}</p>
-                                        <p class="mb-1">${published_date ? published_date : "No data Available"}</p>
+                                        <p class="mb-1 author-style">${name ? name : "No data Available"}</p>
+                                        <p class="mb-1 date-style">${published_date ? published_date : "No data Available"}</p>
                                     </div>
                                 </div> 
                                     
                             </div>
                             <div class="col text-center m-auto"> 
-                                <p class="card-text"><i class="fa-regular fa-eye me-2"></i> <span class="fw-bold">${total_view ? total_view : "No data Available"}</span></p>
+                                <p class="card-text"><i class="fa-regular fa-eye me-2"></i> <span class="view-star-color fw-bold">${total_view ? total_view : "No data Available"}</span></p>
                             </div>
-                            <div class="col text-center m-auto"> 
+                            <div class="col text-center m-auto view-star-color"> 
                                 <i class="fa-solid fa-star-half-stroke"></i>
                                 <i class="fa-regular fa-star"></i>
                                 <i class="fa-regular fa-star"></i>
                                 <i class="fa-regular fa-star"></i>
                             </div>
                             <div class="col text-center text-lg-end m-auto"> 
-                                <a class="pe-2 me-lg-3" onclick="loadModalData('${_id}')" data-bs-toggle="modal" data-bs-target="#exampleModal"><i class="fa-solid fa-arrow-right"></i></a>
+                                <a class="pe-2 me-lg-3" title="News Details" onclick="loadModalData('${_id}')" data-bs-toggle="modal" data-bs-target="#exampleModal"><i class="fa-solid fa-arrow-right"></i></a>
                             </div>
 
                         </div>
@@ -176,7 +181,7 @@ const displayCategory = async (url) => {
         const { category_id, category_name } = category;
         const boolean = true;
         const span = document.createElement('span');
-        span.classList.add('mouse-pointer', 'px-1', 'py-1')
+        span.classList.add('mouse-pointer', 'px-1', 'py-1', 'paragraph-font')
         span.setAttribute("id", `${category_id}`)
         span.setAttribute("onclick", `categoryNewsData('${category_id}','${category_name}',${boolean})`)
         span.innerText = category_name;
