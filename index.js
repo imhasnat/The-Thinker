@@ -1,18 +1,4 @@
-function sortObject(firstData, secondData) {
-
-    return secondData.total_view - firstData.total_view;
-}
-
-const isLoading = boolean => {
-    const spinner = document.getElementById('spinner');
-    if (boolean) {
-        spinner.classList.remove('d-none')
-    }
-    else {
-        spinner.classList.add('d-none')
-    }
-}
-
+// fetch API data
 const fetchData = async (url) => {
     try {
         const res = await fetch(url);
@@ -23,19 +9,42 @@ const fetchData = async (url) => {
         console.log(error)
     }
 }
+
+// sorting news object
+function sortObject(firstData, secondData) {
+
+    return secondData.total_view - firstData.total_view;
+}
+
+// spinner display
+const isLoading = boolean => {
+    const spinner = document.getElementById('spinner');
+    if (boolean) {
+        spinner.classList.remove('d-none')
+    }
+    else {
+        spinner.classList.add('d-none')
+    }
+}
+
 // Modal Details
 const displayModalDetails = newsDetails => {
 
     const { others_info, rating, image_url, title, details, total_view, author } = newsDetails;
     const { name, published_date, img } = author;
-    // const { is_trending } = others_info;
-    // const { number } = rating;
+    const { is_trending } = others_info;
+    const { number } = rating;
     const modalContainer = document.getElementById('modal-detail-container');
     modalContainer.innerHTML = `
         <div class="modal-header align-items-start">
             <div>
                 <h5 class="modal-title title-style" id="exampleModalLabel">${title ? title : "No data Available"}</h5>
-                <br><p class="mb-1 date-style"><span class="fw-bold"> Published:</span> ${published_date ? published_date : "No data Available"}</p>
+                <br><p class="mb-1 date-style"><span class="fw-bold author-style"> Author:</span> ${name ? name : "No data Available"}</p>
+                <p class="mb-1 date-style"><span class="fw-bold author-style"> Rating:</span> ${number ? number : "No data Available"}</p>
+                <p class="mb-1 date-style"><span class="fw-bold author-style"> Trending:</span> ${is_trending ? 'Yes' : "No"}</p>
+                <p class="mb-1 date-style"><span class="fw-bold author-style"> Total view :</span> ${total_view ? total_view : "No data Available"}</p>
+                <p class="mb-1 date-style"><span class="fw-bold author-style"> Published:</span> ${published_date ? published_date : "No data Available"}</p>
+                
                 
             </div>
             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
@@ -69,9 +78,12 @@ const displayNews = (categoryNews) => {
         const { _id, thumbnail_url, title, details, total_view, author } = news;
         const { name, published_date, img } = author;
         const div = document.createElement('div');
-        div.classList.add('card', 'mb-3')
+        div.classList.add('card', 'mb-3');
+        div.setAttribute("onclick", `loadModalData('${_id}')`);
+        div.setAttribute("data-bs-toggle", "modal");
+        div.setAttribute("data-bs-target", "#exampleModal");
         div.innerHTML = `
-        <div class="row g-0">
+        <div class="row g-0" >
             <div class="col-12 col-md-3 p-2">
                 <img src="${thumbnail_url ? thumbnail_url : "No data Available"}" class="w-100 img-fluid rounded-start h-auto" alt="...">
             </div>
@@ -116,7 +128,7 @@ const displayNews = (categoryNews) => {
     isLoading(false);
 }
 
-// Number of news found
+// Number of news found for a category
 const numberOfSearchNews = (categoryNewsArray, categoryName) => {
     const numberOfNews = categoryNewsArray.length
     const newsNumberContainer = document.getElementById('news-numbers');
@@ -136,7 +148,7 @@ const numberOfSearchNews = (categoryNewsArray, categoryName) => {
 }
 // News data fetch
 let previous = 0;
-
+// category click highlight
 const highlightText = categoryId => {
     const next = categoryId;
     if (previous === 0) {
@@ -153,6 +165,7 @@ const highlightText = categoryId => {
     previous = next;
 }
 
+// news data fetch
 const categoryNewsData = async (categoryId, categoryName, boolean) => {
 
     if (boolean) {
@@ -173,7 +186,7 @@ const categoryNewsData = async (categoryId, categoryName, boolean) => {
 // category bar
 const displayCategory = async (url) => {
     const data = await fetchData(url);
-    const categories = data.data.news_category
+    const categories = data.data.news_category;
 
     const categoriesContainer = document.getElementById('categories-container');
 
@@ -181,16 +194,19 @@ const displayCategory = async (url) => {
         const { category_id, category_name } = category;
         const boolean = true;
         const span = document.createElement('span');
-        span.classList.add('mouse-pointer', 'px-1', 'py-1', 'paragraph-font')
-        span.setAttribute("id", `${category_id}`)
-        span.setAttribute("onclick", `categoryNewsData('${category_id}','${category_name}',${boolean})`)
+        span.classList.add('mouse-pointer', 'px-1', 'py-1', 'paragraph-font');
+        span.setAttribute("id", `${category_id}`);
+        span.setAttribute("onclick", `categoryNewsData('${category_id}','${category_name}',${boolean})`);
         span.innerText = category_name;
-        categoriesContainer.appendChild(span)
+        categoriesContainer.appendChild(span);
     })
 }
 
-categoryNewsData('01', 'Breaking News');
+// default news
+categoryNewsData('08', 'All News');
 const url = 'https://openapi.programming-hero.com/api/news/categories';
+
+// category showing
 displayCategory(url);
 
 

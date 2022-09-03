@@ -1,103 +1,123 @@
 @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Roboto:wght@400;700&display=swap');
 
+body {
+    background-color: #F6F6F6;
+}
+
+/* The Thinker font style */
 .logo-font {
     font-family: 'Playfair Display', serif;
 }
 
+/*NavBar*/
 .nav-text-color {
     color: #A3A3A3;
 }
 
 
+/* logo text color */
+.the {
+    color: #5D5FEF !important;
+}
+
+
+/* news details */
 .paragraph-font {
     color: #858585;
     font-family: 'Roboto', sans-serif;
     font-size: 16px;
 }
 
+/* news title */
 .title-style {
     font-family: 'Roboto', sans-serif;
     color: #121221;
     font-weight: 700;
 }
 
+/* author */
 .author-style {
     color: #2B2C34;
     font-size: 14px;
 }
 
+/* view count & rating */
 .view-star-color {
     color: #515151;
 }
 
-.footer-color {
-    color: #949494;
-}
 
+/* publish date */
 .date-style {
     color: #718797;
     font-size: 14px;
 }
 
+/* accordian answer style */
 .small-font-color {
     color: #777777;
 }
 
-body {
-    background-color: #F6F6F6;
-}
-
-
+/* Text Turncat */
 .text-ellipsis {
     text-overflow: ellipsis;
     overflow: hidden;
-    /* Addition lines for 2 line or multiline ellipsis */
     display: -webkit-box !important;
     -webkit-line-clamp: 3;
     -webkit-box-orient: vertical;
     white-space: normal;
 }
 
+/* overflow text scroll */
 .text-scroll {
     height: 150px;
     overflow: auto;
 }
 
+/* author img resize */
 .img-height-width {
     width: 70px;
     height: 70px;
 }
 
+/* text-color */
 .custom-color {
     color: #5D5FEF;
     background-color: #EEEFFF;
 }
 
+
 .mouse-pointer {
     cursor: pointer;
 }
 
+/* category click color */
 .option-color {
     text-decoration: none;
     color: #5D5FEF;
 
 }
 
+/* sort field resize */
 .field-size {
     width: 100px;
 }
 
+/* today's topic button style*/
 .button-style {
     border: none;
     background-color: #5D5FEF;
     color: white;
 }
 
+/* trending button style */
 .button-style1 {
     border: 1px solid #5D5FEF;
     color: #5D5FEF;
 }
 
-.the {
-    color: #5D5FEF !important;
+
+/* Footer */
+.footer-color {
+    color: #949494;
 }
