@@ -19,6 +19,32 @@ const fetchData = async (url) => {
     return data;
 }
 
+const displayModalDetails = newsDetails => {
+
+    const { others_info, rating, image_url, title, details, total_view, author } = newsDetails;
+    const { name, published_date, img } = author;
+    // const { is_trending } = others_info;
+    // const { number } = rating;
+    const modalContainer = document.getElementById('modal-detail-container');
+    modalContainer.innerHTML = `
+        <div class="modal-header">
+         <div>
+            <h5 class="modal-title" id="exampleModalLabel">${title}</h5>
+            <br><p class="mb-1"><span class="fw-bold"> Published:</span> ${published_date}</p>
+            
+         </div>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+
+        </div>
+        <div class="modal-body">
+            <img src="${image_url}" class="img-fluid rounded-start h-auto" alt="...">
+            <p class="card-text text-scroll mt-2">${details}</p>
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        </div>
+    `
+}
 
 const loadModalData = async (newsId) => {
     const url = `https://openapi.programming-hero.com/api/news/${newsId}`
