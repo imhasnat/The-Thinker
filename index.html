@@ -34,31 +34,43 @@
         height: 70px;
     }
 
-    /* .btnn {
-        border: none;
-        outline: none;
-        padding: 10px 16px;
-        background-color: #f1f1f1;
-        cursor: pointer;
+    .custom-color {
+        color: #3E40E8;
+        background-color: #EEEFFF;
+        padding: 2px 5px;
     }
 
-    .activee,
-    .btn:hover {
-        background-color: #666;
-        color: white;
-    } */
+    .option-color {
+        text-decoration: none;
+        color: #3E40E8;
+
+    }
 </style>
 
 <body class="d-flex flex-column min-vh-100">
     <!-- NavBar Start -->
-    <header>
+    <header class="container mt-3 mb-3">
+        <nav class="navbar container">
+            <div class="">
+                <a class="navbar-brand" href="#">
+                    Bootstrap
+                </a>
 
+            </div>
+            <div class="ms-auto">
+                <a href="index.html" class="fw-bold me-3 option-color">News</a>
+                <a href="blog.html" class="fw-bold me-2 text-decoration-none text-black">Blog</a>
+            </div>
+        </nav>
+        <div>
+            <hr>
+        </div>
     </header>
     <!-- NavBar END -->
 
     <main class="container mb-5">
         <!-- categories -->
-        <section class="my-5">
+        <section class="">
             <div id="categories-container" class="d-flex justify-content-between ">
 
             </div>
