@@ -33,21 +33,39 @@
     <!-- NavBar END -->
 
     <main class="container mb-5">
-        <!-- categories -->
+        <!-- categories start-->
         <section class="">
             <div id="categories-container" class="d-flex justify-content-between flex-wrap">
 
             </div>
         </section>
-        <!-- categories end-->
+        <!-- categories END-->
 
-        <!-- Number of news found -->
+        <!-- Number of news found start-->
         <section class="my-5">
             <div id="news-numbers" class="p-3 border border-1 rounded-4 bg-white d-none">
 
             </div>
         </section>
-        <!-- Spinner -->
+        <!-- Number of news found END-->
+
+        <!-- Sort and Trending -->
+        <section class="my-5">
+            <div class="d-md-flex justify-content-between">
+                <p class="text-center">Sort By Vew : <select class="form-select form-select-sm field-size d-inline"
+                        aria-label=".form-select-sm example">
+                        <option selected>Default</option>
+                        <option value="1">Ascending</option>
+                        <option value="2">Descending</option>
+                    </select></p>
+                <div class="text-center">
+                    <button class="button-style rounded-2 px-2 py-1">Today's Pick</button>
+                    <button class="button-style1 rounded-2 px-2 py-1">Trending</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Spinner start-->
         <section>
             <div id="spinner" class="text-center d-none">
                 <div class="spinner-border " role="status">
@@ -55,15 +73,18 @@
                 </div>
             </div>
         </section>
-        <!-- details start -->
+        <!-- Spinner END-->
+
+        <!--News details start -->
         <section>
             <!-- row-cols-md-3 -->
             <div id="news-container">
 
             </div>
         </section>
+        <!--News details END -->
 
-        <!-- Modal -->
+        <!-- Modal start-->
         <section>
             <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
                 aria-hidden="true">
@@ -74,6 +95,7 @@
                 </div>
             </div>
         </section>
+        <!-- Modal END-->
 
     </main>
 

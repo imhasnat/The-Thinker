@@ -36,3 +36,18 @@ body {
     color: #3E40E8;
 
 }
+
+.field-size {
+    width: 100px;
+}
+
+.button-style {
+    border: none;
+    background-color: #3E40E8;
+    color: white;
+}
+
+.button-style1 {
+    border: 1px solid #3E40E8;
+    color: #3E40E8;
+}
