@@ -172,6 +172,7 @@ const displayCategory = async (url) => {
         const { category_id, category_name } = category;
         const boolean = true;
         const span = document.createElement('span');
+        span.classList.add('mouse-pointer')
         span.setAttribute("id", `${category_id}`)
         span.setAttribute("onclick", `categoryNewsData('${category_id}','${category_name}',${boolean})`)
         span.innerText = category_name;

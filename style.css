@@ -1,0 +1,39 @@
+body {
+    background-color: #F6F6F6;
+}
+
+.text-ellipsis {
+    text-overflow: ellipsis;
+    overflow: hidden;
+    /* Addition lines for 2 line or multiline ellipsis */
+    display: -webkit-box !important;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    white-space: normal;
+}
+
+.text-scroll {
+    height: 150px;
+    overflow: auto;
+}
+
+.img-height-width {
+    width: 70px;
+    height: 70px;
+}
+
+.custom-color {
+    color: #3E40E8;
+    background-color: #EEEFFF;
+    padding: 2px 5px;
+}
+
+.mouse-pointer {
+    cursor: pointer;
+}
+
+.option-color {
+    text-decoration: none;
+    color: #3E40E8;
+
+}
