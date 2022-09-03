@@ -27,12 +27,12 @@ const displayModalDetails = newsDetails => {
     // const { number } = rating;
     const modalContainer = document.getElementById('modal-detail-container');
     modalContainer.innerHTML = `
-        <div class="modal-header">
-         <div>
-            <h5 class="modal-title" id="exampleModalLabel">${title ? title : "No data Available"}</h5>
-            <br><p class="mb-1"><span class="fw-bold"> Published:</span> ${published_date ? published_date : "No data Available"}</p>
-            
-         </div>
+        <div class="modal-header align-items-start">
+            <div>
+                <h5 class="modal-title" id="exampleModalLabel">${title ? title : "No data Available"}</h5>
+                <br><p class="mb-1"><span class="fw-bold"> Published:</span> ${published_date ? published_date : "No data Available"}</p>
+                
+            </div>
             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
 
         </div>
@@ -71,30 +71,34 @@ const displayNews = (categoryNews) => {
                 <img src="${thumbnail_url ? thumbnail_url : "No data Available"}" class="w-100 img-fluid rounded-start h-auto" alt="...">
             </div>
             <div class="col-12 col-md-9 p-3 d-flex">
-                <div class="card-body d-flex flex-column justify-content-around">
+                <div class="card-body d-flex flex-column justify-content-around ">
                     
                         <h5 class="card-title"> ${title ? title : "No data Available"}</h5>
                         <p class="card-text text-ellipsis mt-3">${details ? details : "No data Available"}</p>
-                    
-                    <div class="d-flex align-items-center justify-content-between">
-                        <div class="d-flex align-items-center"> 
-                            <img src="${img}" class="img-fluid rounded-pill img-height-width" alt="...">
-                            <div class="ms-2">
-                                <p class="mb-1">${name ? name : "No data Available"}</p>
-                                <p class="mb-1">${published_date ? published_date : "No data Available"}</p>
+                        <div class="row row-cols-1 row-cols-sm-2 row-cols-md-4 g-2">
+                            <div class="col text-center text-lg-start m-auto">
+                                <div class="d-lg-flex">
+                                    <img src="${img}" class="img-fluid rounded-pill img-height-width" alt="...">
+                                    <div class="ms-2">
+                                        <p class="mb-1">${name ? name : "No data Available"}</p>
+                                        <p class="mb-1">${published_date ? published_date : "No data Available"}</p>
+                                    </div>
+                                </div> 
+                                    
                             </div>
-                        </div>
-                        <div> 
-                            <p class="card-text"><i class="fa-regular fa-eye me-2"></i> <span class="fw-bold">${total_view ? total_view : "No data Available"}</span></p>
-                        </div>
-                        <div> 
-                            <i class="fa-solid fa-star-half-stroke"></i>
-                            <i class="fa-regular fa-star"></i>
-                            <i class="fa-regular fa-star"></i>
-                            <i class="fa-regular fa-star"></i>
-                        </div>
-                        <div> 
-                            <a class="pe-2" onclick="loadModalData('${_id}')" data-bs-toggle="modal" data-bs-target="#exampleModal"><i class="fa-solid fa-arrow-right"></i></a>
+                            <div class="col text-center m-auto"> 
+                                <p class="card-text"><i class="fa-regular fa-eye me-2"></i> <span class="fw-bold">${total_view ? total_view : "No data Available"}</span></p>
+                            </div>
+                            <div class="col text-center m-auto"> 
+                                <i class="fa-solid fa-star-half-stroke"></i>
+                                <i class="fa-regular fa-star"></i>
+                                <i class="fa-regular fa-star"></i>
+                                <i class="fa-regular fa-star"></i>
+                            </div>
+                            <div class="col text-center text-lg-end m-auto"> 
+                                <a class="pe-2" onclick="loadModalData('${_id}')" data-bs-toggle="modal" data-bs-target="#exampleModal"><i class="fa-solid fa-arrow-right"></i></a>
+                            </div>
+
                         </div>
                     </div>
                 </div>
@@ -172,7 +176,7 @@ const displayCategory = async (url) => {
         const { category_id, category_name } = category;
         const boolean = true;
         const span = document.createElement('span');
-        span.classList.add('mouse-pointer')
+        span.classList.add('mouse-pointer', 'px-1', 'py-1')
         span.setAttribute("id", `${category_id}`)
         span.setAttribute("onclick", `categoryNewsData('${category_id}','${category_name}',${boolean})`)
         span.innerText = category_name;
