@@ -96,7 +96,7 @@ const displayNews = (categoryNews) => {
                                 <i class="fa-regular fa-star"></i>
                             </div>
                             <div class="col text-center text-lg-end m-auto"> 
-                                <a class="pe-2" onclick="loadModalData('${_id}')" data-bs-toggle="modal" data-bs-target="#exampleModal"><i class="fa-solid fa-arrow-right"></i></a>
+                                <a class="pe-2 me-lg-3" onclick="loadModalData('${_id}')" data-bs-toggle="modal" data-bs-target="#exampleModal"><i class="fa-solid fa-arrow-right"></i></a>
                             </div>
 
                         </div>
