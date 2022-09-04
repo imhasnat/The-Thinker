@@ -39,12 +39,21 @@ const displayModalDetails = newsDetails => {
         <div class="modal-header align-items-start">
             <div>
                 <h5 class="modal-title title-style" id="exampleModalLabel">${title ? title : "No data Available"}</h5>
-                <br><p class="mb-1 date-style"><span class="fw-bold author-style"> Author:</span> ${name ? name : "No data Available"}</p>
-                <p class="mb-1 date-style"><span class="fw-bold author-style"> Rating:</span> ${number ? number : "No data Available"}</p>
-                <p class="mb-1 date-style"><span class="fw-bold author-style"> Trending:</span> ${is_trending ? 'Yes' : "No"}</p>
-                <p class="mb-1 date-style"><span class="fw-bold author-style"> Total view :</span> ${total_view ? total_view : "No data Available"}</p>
-                <p class="mb-1 date-style"><span class="fw-bold author-style"> Published:</span> ${published_date ? published_date : "No data Available"}</p>
+                <br>
                 
+                <div class="d-flex justify-content-between  justify-content-md-around">
+                    <div>
+                        <img src="${img}" class="img-fluid rounded-pill img-height-width" alt="...">
+                        <p class="mb-1 date-style"><span class="fw-bold author-style"> Author:</span> ${name ? name : "No data Available"}</p>
+                    </div>
+                    
+                    <div>
+                        <p class="mb-1 date-style"><span class="fw-bold author-style">News Rating:</span> ${number ? number : "No data Available"}</p>
+                        <p class="mb-1 date-style"><span class="fw-bold author-style"> Trending:</span> ${is_trending ? 'Yes' : "No"}</p>
+                        <p class="mb-1 date-style"><span class="fw-bold author-style"> Total view :</span> ${total_view ? total_view : "No data Available"}</p>
+                        <p class="mb-1 date-style"><span class="fw-bold author-style"> Published:</span> ${published_date ? published_date : "No data Available"}</p>
+                    </div>
+                </div>
                 
             </div>
             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
